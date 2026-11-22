@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Youssef-Khalil Azmani — Portfolio</title>
+<meta name="description" content="Portfolio of Youssef-Khalil Azmani, engineering student at ENSEEIHT specializing in High Performance Computing & Big Data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f4f1ea;
+  --bg-alt: #ebe6db;
+  --surface: #fbf9f4;
+  --ink: #1b2233;
+  --ink-soft: #4a5468;
+  --muted: #7d8597;
+  --line: #d6cfc0;
+  --brand: #304263;
+  --accent: #d9822b;
+  --accent-soft: rgba(217,130,43,.12);
+  --grid: rgba(48,66,99,.09);
+  --shadow: 0 1px 2px rgba(27,34,51,.04), 0 8px 24px rgba(27,34,51,.06);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1420; --bg-alt: #141a28; --surface: #171e2e;
+    --ink: #e8e4da; --ink-soft: #b3b9c6; --muted: #7f879a; --line: #2a3347;
+    --brand: #8fa6d1; --accent: #f0a04b; --accent-soft: rgba(240,160,75,.12);
+    --grid: rgba(143,166,209,.07); --shadow: 0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1420; --bg-alt: #141a28; --surface: #171e2e;
+  --ink: #e8e4da; --ink-soft: #b3b9c6; --muted: #7f879a; --line: #2a3347;
+  --brand: #8fa6d1; --accent: #f0a04b; --accent-soft: rgba(240,160,75,.12);
+  --grid: rgba(143,166,209,.07); --shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.65 "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background .3s, color .3s;
+}
+a { color: inherit; }
+.mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------- Nav ---------- */
+nav {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.logo { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 15px; text-decoration: none; }
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 26px; align-items: center; list-style: none; }
+.nav-links a { text-decoration: none; font-size: 14px; color: var(--ink-soft); transition: color .2s; }
+.nav-links a:hover { color: var(--accent); }
+.theme-btn {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  cursor: pointer; display: grid; place-items: center; transition: border-color .2s;
+}
+.theme-btn:hover { border-color: var(--accent); }
+.theme-btn svg { width: 16px; height: 16px; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative; overflow: hidden;
+  padding: 110px 0 90px;
+  border-bottom: 1px solid var(--line);
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at 75% 40%, #000 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 75% 40%, #000 0%, transparent 70%);
+}
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
+.kicker { font-size: 13px; color: var(--accent); margin-bottom: 18px; }
+.kicker .cursor { display: inline-block; width: 8px; height: 15px; background: var(--accent); vertical-align: -2px; animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+h1 {
+  font-family: "Fraunces", Georgia, serif; font-weight: 600;
+  font-size: clamp(42px, 7vw, 76px); line-height: 1.02; letter-spacing: -0.02em;
+}
+h1 em { font-style: italic; font-weight: 400; color: var(--brand); }
+.tagline { margin-top: 22px; font-size: 18px; color: var(--ink-soft); max-width: 540px; }
+.cta { margin-top: 34px; display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 22px; border-radius: 999px; text-decoration: none;
+  font-size: 15px; font-weight: 500; transition: transform .15s, background .2s, border-color .2s;
+}
+.btn svg { width: 16px; height: 16px; }
+.btn-primary { background: var(--ink); color: var(--bg); }
+.btn-primary:hover { transform: translateY(-2px); background: var(--accent); color: #fff; }
+.btn-ghost { border: 1px solid var(--line); background: var(--surface); }
+.btn-ghost:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+/* Node card (HPC motif) */
+.node {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: var(--shadow); font-family: "JetBrains Mono", monospace; font-size: 13px; overflow: hidden;
+}
+.node-head { display: flex; align-items: center; gap: 7px; padding: 12px 16px; border-bottom: 1px solid var(--line); color: var(--muted); }
+.node-head i { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+.node-head i:first-child { background: var(--accent); }
+.node-head span { margin-left: auto; font-size: 12px; }
+.node-body { padding: 18px 18px 20px; }
+.node-body .row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dashed var(--line); }
+.node-body .row:last-of-type { border-bottom: none; }
+.node-body .k { color: var(--muted); }
+.node-body .v { color: var(--ink); text-align: right; }
+.status { margin-top: 16px; display: flex; align-items: center; gap: 8px; color: var(--ink); }
+.status .dot { width: 8px; height: 8px; border-radius: 50%; background: #3fae6a; box-shadow: 0 0 0 4px rgba(63,174,106,.18); animation: pulse 2s infinite; }
+@keyframes pulse { 50% { box-shadow: 0 0 0 7px rgba(63,174,106,.05); } }
+
+/* ---------- Sections ---------- */
+section { padding: 96px 0; border-bottom: 1px solid var(--line); }
+section:nth-of-type(even) { background: var(--bg-alt); }
+.sec-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 48px; }
+.sec-num { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--accent); }
+h2 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(30px, 4vw, 42px); letter-spacing: -0.015em; }
+.sec-head .rule { flex: 1; height: 1px; background: var(--line); }
+
+/* About */
+.about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 56px; }
+.about-grid p { color: var(--ink-soft); font-size: 17px; margin-bottom: 16px; }
+.about-grid p strong { color: var(--ink); font-weight: 600; }
+.facts { list-style: none; border-top: 1px solid var(--line); }
+.facts li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+.facts .k { color: var(--muted); font-family: "JetBrains Mono", monospace; font-size: 13px; }
+.facts .v { text-align: right; font-weight: 500; }
+
+/* Timeline */
+.timeline { position: relative; }
+.t-item { display: grid; grid-template-columns: 170px 1fr; gap: 32px; padding: 28px 0; border-top: 1px solid var(--line); }
+.t-item:last-child { border-bottom: 1px solid var(--line); }
+.t-date { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--muted); padding-top: 4px; }
+.t-tag { display: inline-block; margin-top: 8px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: 3px 9px; border-radius: 999px; }
+.t-item h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+.t-org { color: var(--brand); font-weight: 500; margin-top: 2px; }
+.t-item p { color: var(--ink-soft); margin-top: 10px; }
+.t-item ul { margin-top: 12px; list-style: none; }
+.t-item li { position: relative; padding-left: 20px; color: var(--ink-soft); margin-bottom: 7px; }
+.t-item li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 14px; }
+.t-item li strong { color: var(--ink); font-weight: 600; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chip { font-family: "JetBrains Mono", monospace; font-size: 12px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft); }
+
+/* Projects */
+.projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
+.card {
+  position: relative; display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  padding: 28px; box-shadow: var(--shadow); transition: transform .2s, border-color .2s;
+}
+.card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+.card-idx { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); }
+.card-year { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--accent); }
+.card h3 { font-family: "Fraunces", Georgia, serif; font-size: 23px; font-weight: 600; line-height: 1.2; }
+.card .sub { color: var(--brand); font-size: 14px; font-weight: 500; margin-top: 4px; }
+.card p { color: var(--ink-soft); margin-top: 14px; font-size: 15px; flex: 1; }
+.card .chips { margin-top: 20px; }
+.card.soon {
+  border-style: dashed; background: transparent; box-shadow: none;
+  align-items: center; justify-content: center; text-align: center; min-height: 260px;
+}
+.card.soon:hover { transform: none; }
+.card.soon .mono { color: var(--muted); font-size: 13px; }
+.card.soon h3 { color: var(--ink-soft); margin-top: 10px; font-size: 20px; }
+
+/* Skills */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
+.skill-box { border-top: 2px solid var(--ink); padding-top: 18px; }
+.skill-box h3 { font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 14px; }
+.skill-box ul { list-style: none; }
+.skill-box li { padding: 7px 0; border-bottom: 1px solid var(--line); font-size: 15px; display: flex; justify-content: space-between; }
+.skill-box li span { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); }
+
+/* Interests */
+.interests { display: flex; flex-wrap: wrap; gap: 12px; }
+.interest { display: flex; align-items: center; gap: 10px; padding: 12px 18px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-size: 15px; }
+.interest svg { width: 18px; height: 18px; color: var(--accent); }
+
+/* Contact */
+.contact { text-align: center; }
+.contact h2 { font-size: clamp(36px, 6vw, 60px); line-height: 1.05; }
+.contact h2 em { font-style: italic; font-weight: 400; color: var(--accent); }
+.contact p { color: var(--ink-soft); margin: 20px auto 0; max-width: 520px; font-size: 17px; }
+.contact .cta { justify-content: center; }
+footer { padding: 32px 0; text-align: center; font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); }
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .hero { padding: 72px 0 64px; }
+  .hero .wrap, .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .nav-links li:not(:last-child) { display: none; }
+  .t-item { grid-template-columns: 1fr; gap: 6px; }
+  section { padding: 72px 0; }
+}
+@media (max-width: 420px) {
+  .wrap { padding: 0 16px; }
+  .projects { grid-template-columns: 1fr; }
+  .btn { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">yk<span>.</span>azmani</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="kicker mono">$ whoami <span class="cursor"></span></p>
+      <h1>Youssef-Khalil<br><em>Azmani</em></h1>
+      <p class="tagline">Engineering student at ENSEEIHT specializing in <strong>High Performance Computing &amp; Big Data</strong>. I build at the intersection of AI, data and systems.</p>
+      <div class="cta">
+        <a href="CV_Azmani_Youssef.pdf" class="btn btn-primary" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+
+    <aside class="node reveal" aria-label="Profile summary">
+      <div class="node-head"><i></i><i></i><i></i><span>node-01 / profile</span></div>
+      <div class="node-body">
+        <div class="row"><span class="k">school</span><span class="v">ENSEEIHT · INP Toulouse</span></div>
+        <div class="row"><span class="k">year</span><span class="v">2nd year (M1 level)</span></div>
+        <div class="row"><span class="k">track</span><span class="v">HPC &amp; Big Data</span></div>
+        <div class="row"><span class="k">focus</span><span class="v">AI · Data · Systems</span></div>
+        <div class="row"><span class="k">location</span><span class="v">Toulouse, France</span></div>
+        <div class="status"><span class="dot"></span>Open to a summer 2027 internship</div>
+      </div>
+    </aside>
+  </div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">01</span><h2>About</h2><span class="rule"></span></div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I'm a second-year engineering student in <strong>Digital Sciences</strong> at ENSEEIHT, specializing in <strong>High Performance Computing &amp; Big Data</strong>.</p>
+        <p>After two intensive years of MPSI/MP* preparatory classes in Casablanca, I've built a strong foundation in mathematics and computer science, which I now apply to systems programming, numerical methods, networking and machine learning.</p>
+        <p>I'm especially interested in <strong>AI, data engineering, cybersecurity</strong> and software development, and I'm eager to deepen these fields through hands-on projects and professional experience.</p>
+      </div>
+      <ul class="facts reveal">
+        <li><span class="k">citizenship</span><span class="v">Moroccan</span></li>
+        <li><span class="k">arabic</span><span class="v">Native</span></li>
+        <li><span class="k">french</span><span class="v">Fluent</span></li>
+        <li><span class="k">english</span><span class="v">Fluent</span></li>
+        <li><span class="k">based in</span><span class="v">Toulouse, France</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= JOURNEY ================= -->
+<section id="journey">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">02</span><h2>Experience &amp; Education</h2><span class="rule"></span></div>
+    <div class="timeline">
+
+      <article class="t-item reveal">
+        <div class="t-date">Summer 2026<br><span class="t-tag">Internship</span></div>
+        <div>
+          <h3>FinOps &amp; Data Intern</h3>
+          <div class="t-org">Alvéole IT · 1.5 months</div>
+          <p>Studied FinOps practices applied to Data environments and benchmarked cost-management solutions to support technology choices.</p>
+          <ul>
+            <li><strong>Technology watch:</strong> analysed FinOps trends and existing solutions (specialised vendors, cloud-native tools, integrated Data platforms).</li>
+            <li><strong>Comparative benchmark:</strong> defined evaluation criteria, compared solutions, summarised strengths and weaknesses, and mapped the market.</li>
+            <li><strong>Data platform analysis:</strong> studied workload types, data volumes, billing models and optimisation levers.</li>
+            <li><strong>Hands-on testing:</strong> ran functional tests on several FinOps tools and assessed metric relevance and ease of integration into a Data architecture.</li>
+          </ul>
+          <div class="chips"><span class="chip">FinOps</span><span class="chip">Cloud cost management</span><span class="chip">Data platforms</span><span class="chip">Benchmarking</span></div>
+        </div>
+      </article>
+
+      <article class="t-item reveal">
+        <div class="t-date">2025 — 2028<br><span class="t-tag">Engineering degree</span></div>
+        <div>
+          <h3>ENSEEIHT — INP Toulouse</h3>
+          <div class="t-org">Digital Sciences · High Performance Computing &amp; Big Data track</div>
+          <p>Currently in 2nd year. Coursework includes numerical methods, systems programming (C, Unix), networking, Java OOP, functional programming (OCaml), automata &amp; formal languages, model-driven engineering and machine learning fundamentals.</p>
+        </div>
+      </article>
+
+      <article class="t-item reveal">
+        <div class="t-date">2023 — 2025<br><span class="t-tag">Preparatory classes</span></div>
+        <div>
+          <h3>CPGE MPSI / MP*</h3>
+          <div class="t-org">Lycée d'Excellence Mohammed VI · Casablanca</div>
+          <p>Two years of intensive preparatory classes in mathematics, physics and computer science for the French Grandes Écoles entrance exams.</p>
+        </div>
+      </article>
+
+      <article class="t-item reveal">
+        <div class="t-date">2023<br><span class="t-tag">Diploma</span></div>
+        <div>
+          <h3>Baccalauréat — Mathematical Sciences</h3>
+          <div class="t-org">Morocco</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">03</span><h2>Projects</h2><span class="rule"></span></div>
+    <div class="projects">
+
+      <article class="card reveal">
+        <div class="card-top"><span class="card-idx">/01</span><span class="card-year">2024</span></div>
+        <h3>GAN-based Image Generation</h3>
+        <div class="sub">Research project (TIPE)</div>
+        <p>Designed and implemented a method to transform a latent vector into a realistic image using Generative Adversarial Networks. Explored latent-space representations, adversarial training dynamics and image synthesis techniques.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">Deep Learning</span><span class="chip">GANs</span></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-top"><span class="card-idx">/02</span><span class="card-year">2026</span></div>
+        <h3>LOST — Survival Game</h3>
+        <div class="sub">Team project · ENSEEIHT</div>
+        <p>A survival game built in Java Swing by a team following Scrum. I led the graphical interface: main window and menu, crafting, map with fog-of-war, events and end-game screens, built on an MVC architecture.</p>
+        <div class="chips"><span class="chip">Java</span><span class="chip">Swing</span><span class="chip">MVC</span><span class="chip">Scrum</span><span class="chip">UML</span></div>
+      </article>
+
+      <div class="card soon reveal">
+        <span class="mono">// in progress</span>
+        <h3>More projects coming soon</h3>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">04</span><h2>Skills</h2><span class="rule"></span></div>
+    <div class="skills-grid">
+      <div class="skill-box reveal">
+        <h3>Languages</h3>
+        <ul>
+          <li>Python</li>
+          <li>C</li>
+          <li>Java</li>
+          <li>OCaml</li>
+          <li>Ada <span>beginner</span></li>
+        </ul>
+      </div>
+      <div class="skill-box reveal">
+        <h3>Data &amp; AI</h3>
+        <ul>
+          <li>PyTorch</li>
+          <li>Machine Learning</li>
+          <li>Deep Learning</li>
+          <li>FinOps for Data</li>
+        </ul>
+      </div>
+      <div class="skill-box reveal">
+        <h3>Tools</h3>
+        <ul>
+          <li>Linux / Unix</li>
+          <li>Git</li>
+          <li>MATLAB</li>
+          <li>MS PowerPoint</li>
+        </ul>
+      </div>
+      <div class="skill-box reveal">
+        <h3>Soft skills</h3>
+        <ul>
+          <li>Analytical thinking</li>
+          <li>Problem-solving</li>
+          <li>Communication</li>
+          <li>Teamwork</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INTERESTS ================= -->
+<section id="interests">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">05</span><h2>Beyond code</h2><span class="rule"></span></div>
+    <div class="interests reveal">
+      <span class="interest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 7l4 3-1.5 5h-5L8 10z"/></svg>Football</span>
+      <span class="interest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 16c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/><path d="M2 20c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/></svg>Surfing</span>
+      <span class="interest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/></svg>Gym &amp; fitness</span>
+      <span class="interest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Guitar</span>
+      <span class="interest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4h7a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H2zM22 4h-7a3 3 0 0 0-3 3v14a2 2 0 0 1 2-2h8z"/></svg>Reading</span>
+      <span class="interest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>Travel</span>
+      <span class="interest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="10" rx="5"/><path d="M7 10v4M5 12h4M16 11h.01M18 13h.01"/></svg>Gaming</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+  <div class="wrap reveal">
+    <p class="kicker mono">06 — contact</p>
+    <h2>Let's build something<br><em>together.</em></h2>
+    <p>I'm looking for a summer 2027 internship in HPC, data or AI. Feel free to reach out.</p>
+    <div class="cta">
+      <a href="mailto:azmaniyoussef3006@gmail.com" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+        azmaniyoussef3006@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/azmani-youssef-b57718385/" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+        LinkedIn
+      </a>
+      <a href="tel:+33744203226" class="btn btn-ghost">+33 7 44 20 32 26</a>
+      <a href="CV_Azmani_Youssef.pdf" class="btn btn-ghost" download>Download CV</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Youssef-Khalil Azmani · Toulouse</footer>
+
+<script>
+  // Theme toggle (remembers choice when storage is available)
+  const root = document.documentElement;
+  try { const t = localStorage.getItem("theme"); if (t) root.setAttribute("data-theme", t); } catch (e) {}
+  document.getElementById("themeBtn").addEventListener("click", () => {
+    const dark = root.getAttribute("data-theme") === "dark" ||
+      (!root.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    const next = dark ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
